@@ -1,0 +1,17 @@
+<%- include('header') %>
+
+<main class="container">
+  <h1>Your Cart</h1>
+  <% if (cart.length > 0) { %>
+    <ul>
+      <% cart.forEach(item => { %>
+        <li><%= item.title %> - $<%= item.price %></li>
+      <% }) %>
+    </ul>
+    <a href="/checkout" class="btn">Proceed to Checkout</a>
+  <% } else { %>
+    <p>Your cart is empty.</p>
+  <% } %>
+</main>
+
+<%- include('footer') %>

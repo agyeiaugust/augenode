@@ -1,0 +1,16 @@
+<%- include('header') %>
+
+<main class="container">
+  <h1>Checkout</h1>
+  <ul>
+    <% cart.forEach(item => { %>
+      <li><%= item.title %> - $<%= item.price %></li>
+    <% }) %>
+  </ul>
+  <p><strong>Total: $<%= total %></strong></p>
+  <form method="POST" action="/checkout">
+    <button class="btn" type="submit">Complete Purchase</button>
+  </form>
+</main>
+
+<%- include('footer') %>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <%- include('header') %>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Welcome to <%= blogName || 'Our Blog' %></h1>
+      <p>Your go-to place for fresh articles, insights, and stories.</p>
+      <a href="/about" class="btn">Learn More</a>
+    </section>
+
+    <section class="blog-layout">
+      <div class="posts">
+        <h2>Latest Posts</h2>
+        <% if (posts && posts.length > 0) { %>
+          <% posts.forEach(post => { %>
+            <article class="post-card">
+              <h3><a href="/posts/<%= post.id %>"><%= post.title %></a></h3>
+              <p><%= post.excerpt %></p>
+              <small>By <%= post.author %> on <%= post.date %></small>
+            </article>
+          <% }) %>
+        <% } else { %>
+          <p>No posts yet.</p>
+        <% } %>
+      </div>
+
+      <aside class="sidebar">
+        <h3>Tags</h3>
+        <ul>
+          <% tags && tags.forEach(tag => { %>
+            <li><a href="/tags/<%= tag %>"><%= tag %></a></li>
+          <% }) %>
+        </ul>
+      </aside>
+    </section>
+  </main>
+
+  <%- include('footer') %>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<%- include('header') %>
+
+<main class="container">
+  <article class="post-card">
+    <h1><%= post.title %></h1>
+    <p><small>By <%= post.author %> on <%= post.date %></small></p>
+    <p><%= post.content %></p>
+    <form method="POST" action="/cart/add">
+      <input type="hidden" name="postId" value="<%= post.id %>">
+      <button class="btn" type="submit">Add to Cart - $<%= post.price %></button>
+    </form>
+  </article>
+</main>
+
+<%- include('footer') %>
